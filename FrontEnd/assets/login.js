@@ -31,10 +31,10 @@ form.addEventListener('submit', function(event) {
             // Stocker le token dans le localStorage pour la session de l'utilisateur
             localStorage.setItem("token", data.token);
             // Rediriger l'utilisateur vers la page d'accueil
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         } else {
             // Afficher un message d'erreur
-            alert("Email ou mot de passe incorrect.");
+            alert("Email ou mot de passe incorrect");
         }
     })
     .catch(error => {
