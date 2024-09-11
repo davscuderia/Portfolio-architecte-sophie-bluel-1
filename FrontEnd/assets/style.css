@@ -25,7 +25,7 @@ time, mark, audio, video {
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, .boutons-filtres {
+footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
@@ -63,13 +63,24 @@ section {
 }
 /* concerne les nouveaux boutons projets */
 .boutons-filtres {
+text-align: center;
+
+}
+.btn-tous, .btn-objets, .btn-apparts, .btn-h-et-resto {
+	
 	font-family: 'Syne';
 	font-weight: 700;
 	color: #1d6154;
-	margin : 2em auto ;
-	text-align: center;
-	border-radius: 60px ;
+	padding: 5px 10px;	
+	margin : 2em auto;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background: none;
 }
+.btn-tous:hover, .btn-objets:hover, .btn-apparts:hover, .btn-h-et-resto:hover {
+	color: #fff;
+	background: #1d6154;
+}	
 .modal {
 	display: flex;
 	align-items: center;
