@@ -14,13 +14,24 @@
 	<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+	<a href="#modal1" class="js-modale"></a>
+		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+			<div class="modal-wrapper js-modale-stop">
+				<button class="js-modale-close" alt= "Fermer la boite modale"><i class="fa-solid fa-xmark"></i></button>
+				<h1 id="titlemodal">Galerie photo</h1>
+					<div class="gallery-modale">
+
+					</div>
+					<input type="submit" value="Ajouter une photo">
+			</div>
+		</aside>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="/assets/page_admin.html">login</a></li>
+			<li><a href="/assets/page_admin.html" class="bouton-login">login</a></li>
 			<li><img src="/assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -38,24 +49,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-	<a href="#modal1" class="js-modale"><i class="fa-regular fa-pen-to-square"></i>modifier</a>
-		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
-			<div class="modal-wrapper js-modale-stop">
-				<button class="js-modale-close">Fermer la boite modale</button>
-				<h1 id="titlemodal">Galerie photo</h1>
-					<div class="mini-gallery">
-
-					</div>
-					<input type="submit" value="Ajouter une photo">
-			</div>
-		</aside>
+		<i class="fa-regular fa-pen-to-square"></i>modifier <!--doit apparaitre uniquement en mode édition-->
 		<h2>Mes Projets</h2>
-		<div class="boutons-filtres">
+		<div class="boutons-filtres" id="boutonsFiltres"> <!--doit disparaitre en mode édition-->
 			<button class="btn-tous">Tous</button>
 			<button class="btn-objets">Objets</button>
 			<button class="btn-apparts">Appartements</button>
 			<button class="btn-h-et-resto">Hôtels & restaurants</button>
-
 		</div>
 		<div class="gallery">	
 		</div>
@@ -83,6 +83,7 @@
 	</nav>
 </footer>
 <script src="assets/galerie.js"></script>
+<script src="assets/login.js"></script>
 <script src="assets/modale.js"></script>
 </body>
 </html>

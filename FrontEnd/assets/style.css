@@ -94,11 +94,36 @@ text-align: center;
 	overflow: auto;
 	width: 630px;
 	height: 688px;
+	padding: 40px;
 	border-radius: 10px;
 	background-color: #fff;
 }
-
-h1{
+.js-modale-close {
+position: relative;
+left: 98%;
+background: none;
+border: none;
+}
+/* Cibler la galerie dans la modale */
+.gallery-modale {
+    display: grid; /* Utilise une grille pour organiser les miniatures */
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Ajuste automatiquement le nombre de colonnes */
+    gap: 5px; /* Ajoute un espacement entre les images */
+    padding: 5px; /* Ajoute un peu de padding autour de la galerie */
+}
+/* Styliser chaque figure contenant l'image */
+.gallery-modale figure {
+    margin: 0;
+    padding: 0;
+}
+/* Ajuster la taille des images pour qu'elles soient des miniatures */
+.gallery-modale img {
+    width: 77px; /* Largeur des miniatures */
+    height: 103px; /* Hauteur des miniatures */
+    object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
+    cursor: pointer; /* Change le curseur lorsque l'utilisateur survole une image */
+}
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
