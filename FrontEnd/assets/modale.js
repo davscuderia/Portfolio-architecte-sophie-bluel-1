@@ -25,10 +25,12 @@ const addGalleryModale = function () {
        img.src = work.imageUrl;
        img.alt = work.title;
        figure.appendChild(img);
-
-       /*const figcaption = document.createElement("figcaption");
-       figcaption.innerText = work.title;
-       figure.appendChild(figcaption);*/
+       // Ajout de l'icône de poubelle
+       const trashIcon = document.createElement("button");
+       trashIcon.classList.add("img-trash");
+       trashIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`; 
+      
+       figure.appendChild(trashIcon);
 
        modaleGalleryContainer.appendChild(figure);
     })
@@ -51,8 +53,8 @@ const stopPropagation = function (e) {
     e.stopPropagation()
 
 }
-
-document.querySelectorAll('.js-modale').forEach(a => {
+//ouvre la fenêtre modale
+document.querySelectorAll('.js-modale-btn').forEach(a => {
     a.addEventListener('click', openModale)
    
 })

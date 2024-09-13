@@ -6,10 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	  <!-- our project just needs Font Awesome Solid + Brands -->
+	  <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
+	  <link href="/assets/fontawesome/css/brands.css" rel="stylesheet" />
+	  <link href="/assets/fontawesome/css/solid.css" rel="stylesheet" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="/assets/style.css">
 </head>
@@ -17,11 +21,14 @@
 	<a href="#modal1" class="js-modale"></a>
 		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
 			<div class="modal-wrapper js-modale-stop">
-				<button class="js-modale-close" alt= "Fermer la boite modale"><i class="fa-solid fa-xmark"></i></button>
+				<button class="js-modale-close" alt= "Fermer la boite modale">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
 				<h1 id="titlemodal">Galerie photo</h1>
 					<div class="gallery-modale">
-
-					</div>
+					<button class= "img-trash" alt="poubelle">
+						<i class="fa-solid fa-trash-can"></i> 
+					</button>	
 					<input type="submit" value="Ajouter une photo">
 			</div>
 		</aside>
@@ -31,7 +38,9 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="/assets/page_admin.html" class="bouton-login">login</a></li>
+			<li>
+				<a href="page_admin.html" class="bouton-login">login</a>
+			</li>
 			<li><img src="/assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -49,7 +58,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<i class="fa-regular fa-pen-to-square"></i>modifier <!--doit apparaitre uniquement en mode édition-->
+		<a href="#modal1" class="js-modale-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</a> <!--doit apparaitre uniquement en mode édition-->
 		<h2>Mes Projets</h2>
 		<div class="boutons-filtres" id="boutonsFiltres"> <!--doit disparaitre en mode édition-->
 			<button class="btn-tous">Tous</button>
