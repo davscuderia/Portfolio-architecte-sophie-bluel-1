@@ -123,6 +123,22 @@ border: none;
     object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
     cursor: pointer; /* Change le curseur lorsque l'utilisateur survole une image */
 }
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1D6154;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none; /* Retire la décoration par défaut du lien */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-link:hover {
+    background-color: #145A3D; /* Changement de couleur au survol */
+}
+
 h1 {
 	display: flex;
 	flex-direction: column;

@@ -21,15 +21,54 @@
 	<a href="#modal1" class="js-modale"></a>
 		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
 			<div class="modal-wrapper js-modale-stop">
-				<button class="js-modale-close" alt= "Fermer la boite modale">
+				<button class="js-modale-close" title= "Fermer la boite modale">
 					<i class="fa-solid fa-xmark"></i>
 				</button>
-				<h1 id="titlemodal">Galerie photo</h1>
-					<div class="gallery-modale">
-					<button class= "img-trash" alt="poubelle">
+				<h2 id="titlemodal">Galerie photo</h2>
+				<div class="gallery-modale">
+					<button class="btn-trash" title="poubelle">
 						<i class="fa-solid fa-trash-can"></i> 
-					</button>	
-					<input type="submit" value="Ajouter une photo">
+					</button>
+				</div>		
+				<a href="#modal2" id="ajouter" title="Cliquez pour ajouter" class="button-link">
+					Ajouter une photo
+				</a>
+			</div>
+		</aside>
+		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2" style="display:none;">
+			<div class="modal-wrapper js-modale-stop">	
+				<button class="js-modale-close" title= "Fermer la boite modale">
+					<i class="fa-solid fa-xmark"></i>
+				</button>	
+					<a href="#modal1" id="retour" title="Retour vers modal 1" class="button-link">
+					<i class="fa-solid fa-arrow-left"></i> Retour
+					</a>					
+				<h2 id="titlemodal2">Ajout photo</h2>
+					<form id="ajouter-photo" enctype="multipart/form-data">
+						<div class="ajout-photo">
+							<label for="file-upload" class="custom-file-upload">
+								<i class="fa-regular fa-image"></i>
+								<input type="button" id="btn-ajouter" value="+ Ajouter photo">
+								<span class="info">Formats acceptés : JPG, PNG (4 Mo max)</span>
+							</label>
+							<input id="file-upload" type="file" accept=".jpg,.jpeg,.png" style="display: none;">
+						</div>
+						<div class="titre-photo">
+							<label for="titre">Titre :</label>
+							<input type="text" id="titre" name="titre" placeholder="Entrez un titre" required>
+						</div>
+						<div class="categorie-photo">
+							<label for="categorie">Catégorie :</label>
+							<select id="categorie" name="categorie" required>
+								<option value="Objets">Objets</option>
+								<option value="Appartements">Appartements</option>
+								<option value="Hotels & restaurants">Hôtels & Restaurants</option>
+							</select>
+						</div>
+						<div class="submit-form">
+							<input type="submit" value="Soumettre">
+						</div>
+					</form>
 			</div>
 		</aside>
 <header>
@@ -94,5 +133,6 @@
 <script src="assets/galerie.js"></script>
 <script src="assets/login.js"></script>
 <script src="assets/modale.js"></script>
+<script src="assets/modifications.js"></script>
 </body>
 </html>

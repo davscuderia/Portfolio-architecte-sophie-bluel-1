@@ -1,3 +1,4 @@
+
 let modale = null
 const openModale = function (e) {
     e.preventDefault()
@@ -27,13 +28,14 @@ const addGalleryModale = function () {
        figure.appendChild(img);
        // Ajout de l'icône de poubelle
        const trashIcon = document.createElement("button");
-       trashIcon.classList.add("img-trash");
+       trashIcon.classList.add("btn-trash");
        trashIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`; 
-      
+       // Ajout de l'icône de poubelle dans la figure
        figure.appendChild(trashIcon);
-
-       modaleGalleryContainer.appendChild(figure);
-    })
+       // Ajout de la figure au container de la modale
+       modaleGalleryContainer.appendChild(figure);  
+    })   
+    
 }
 
 const closeModale = function (e) {
@@ -63,5 +65,26 @@ window.addEventListener('keydown', function (e) {
     if(e.key === "Escape" || e.key === "Esc") {
         closeModale(e)
     }
-
 })
+
+// Sélectionner les éléments du DOM
+const fileUpload = document.getElementById('file-upload');
+const btnAjouter = document.getElementById('ajouter');
+    // Vérifier si l'élément est bien trouvé
+    console.log('Élément file-upload trouvé :', fileUpload, btnAjouter);
+
+// Ajouter un écouteur d'événements au lien "Ajouter une photo"
+btnAjouter.addEventListener('click', function(event) {
+    // Empêcher le comportement par défaut du lien
+    event.preventDefault();
+    
+    // Afficher la deuxième modale (vous devrez ajuster ceci selon votre logique d'affichage)
+    const modal2 = document.getElementById('modal2');
+    modal2.style.display = 'block';
+
+    console.log('Modale d\'ajout de photo ouverte');
+});
+// Vérifier si l'écouteur d'événements est bien ajouté
+console.log('Écouteur d\'événements ajouté au bouton Ajouter une photo');
+
+
