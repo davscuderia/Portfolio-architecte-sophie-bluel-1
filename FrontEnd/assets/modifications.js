@@ -8,7 +8,7 @@ const btnAjouterPhoto = document.getElementById('btn-ajouter');
 
 // Vérifier si l'écouteur d'événements est bien ajouté
 console.log('Écouteur d\'événements ajouté au bouton + Ajouter photo');
-// Gérer le changement de fichier
+// Gère le changement de fichier
 fileUpload.addEventListener('change', function(event) {
     const file = event.target.files[0];
     console.log('Fichier sélectionné:', file);
@@ -17,7 +17,7 @@ fileUpload.addEventListener('change', function(event) {
         // Vérifier le type et la taille du fichier
         if (validateFile(file)) {
             console.log('Fichier valide, prêt pour le téléchargement');
-            // Ici, vous pouvez ajouter le code pour afficher un aperçu de l'image
+            // Ici, on peut ajouter le code pour afficher un aperçu de l'image
         } else {
             console.log('Fichier invalide');
             // Afficher un message d'erreur à l'utilisateur
@@ -28,7 +28,7 @@ fileUpload.addEventListener('change', function(event) {
 // Fonction pour valider le fichier
 function validateFile(file) {
     const validTypes = ['image/jpeg', 'image/png'];
-    const maxSize = 4 * 1024 * 1024; // 4 Mo
+    const maxSize = 4 * 1024 * 1024; //= 4 Mo
 
     if (!validTypes.includes(file.type)) {
         console.log('Type de fichier non valide');
@@ -44,7 +44,11 @@ function validateFile(file) {
     return true;
 }
 
-// Vérifier si l'écouteur d'événements est bien ajouté
-console.log('Écouteur d\'événements ajouté à l\'input file');
-
+//gestion du clic sur le bouton "Retour"
+btnRetour.addEventListener('click', function(event) {
+    console.log('Clic sur le bouton Retour');
+    event.preventDefault(); // Empêcher le comportement par défaut du lien
+    toggleModals(); // Basculer entre les modales
+});
+console.log('Écouteur ajouté au bouton Retour');
 
