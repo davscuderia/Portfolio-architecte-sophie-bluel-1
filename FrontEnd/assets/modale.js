@@ -75,109 +75,62 @@ const modal2 = document.getElementById('modal2');
 const btnRetour = document.getElementById('retour');
 const closeButtons = document.querySelectorAll('.js-modale-close');
 
-    // Vérifier si l'élément est bien trouvé
-    console.log('Élément file-upload trouvé :', retour, modal1, modal2, fileUpload, btnAjouter);
-    // Sélectionner tous les boutons de fermeture
-    console.log('Boutons de fermeture trouvés:', closeButtons.length);
-// Ajouter un écouteur d'événements au lien "Ajouter une photo"
-btnAjouter.addEventListener('click', function(event) {
-    // Empêcher le comportement par défaut du lien
-    event.preventDefault();
-    
-    // Afficher la deuxième modale (vous devrez ajuster ceci selon votre logique d'affichage)
-    const modal2 = document.getElementById('modal2');
-    modal2.style.display = 'block';
-
-    console.log('Modale d\'ajout de photo ouverte');
-});
-// Vérifier si l'écouteur d'événements est bien ajouté
-console.log('Écouteur d\'événements ajouté au bouton Ajouter une photo');
+// Vérifier si l'élément est bien trouvé
+console.log('Élément file-upload trouvé');
+console.log('Boutons de fermeture trouvés:', closeButtons.length);
 
 // Fonction pour basculer entre les modales
 function toggleModals() {
-    console.log('Basculement entre les modales');
-    
-    // Vérifier l'état actuel des modales
-    const modal1Visible = modal1.style.display !== 'none';
-    console.log('Modal 1 visible:', modal1Visible);
-
-    // Basculer l'affichage des modales
+    const modal1Visible = modal1.style.display !== 'none'; 
     modal1.style.display = modal1Visible ? 'none' : 'block';
     modal2.style.display = modal1Visible ? 'block' : 'none';
-
-    console.log('Nouvel état - Modal 1:', modal1.style.display);
-    console.log('Nouvel état - Modal 2:', modal2.style.display);
+    console.log('Modal 1:', modal1.style.display, 'Modal 2:', modal2.style.display);
 }
-
-// Vérifier si l'écouteur d'événements est bien ajouté
-console.log('Écouteur d\'événements ajouté à l\'input file');
 
 // Gestion du clic sur le bouton "Ajouter une photo"
 btnAjouter.addEventListener('click', function(event) {
-    console.log('Clic sur le bouton Ajouter une photo');
-    event.preventDefault(); // Empêcher le comportement par défaut du lien
-    toggleModals(); // Basculer entre les modales
+    event.preventDefault();
+    toggleModals();
+    console.log('Clic sur "Ajouter une photo"');
 });
-console.log('Écouteur ajouté au bouton Ajouter une photo');
-
-/*// Fonction pour fermer la modale active
-function closeActiveModal() {
-    console.log('Tentative de fermeture de la modale active');
-    if (modal1.style.display === 'block') {
-        modal1.style.display = 'none';
-        console.log('Modal 1 fermée');
-    } else if (modal2.style.display === 'block') {
-        modal2.style.display = 'none';
-        console.log('Modal 2 fermée');
-    } else {
-        console.log('Aucune modale active à fermer');
-    }
-}
-*/
-// Ajout des écouteurs d'événements aux boutons de fermeture
-closeButtons.forEach((button, index) => {
-    button.addEventListener('click', function(event) {
-        console.log(`Bouton de fermeture ${index + 1} cliqué`);
-        event.preventDefault();
-        closeActiveModal();
-    });
-});
-
-console.log('Écouteurs ajoutés à tous les boutons de fermeture');
-const modals = [modal1, modal2]; // Regrouper les modales dans un tableau
-console.log('Modales sélectionnées:', modals);
 
 // Fonction pour fermer la modale active
 function closeActiveModal() {
-    console.log('Tentative de fermeture de la modale active');
-    modals.forEach(modal => {
+    [modal1, modal2].forEach(modal => {
         if (modal.style.display === 'block') {
             modal.style.display = 'none';
             console.log('Modale fermée:', modal.id);
         }
     });
 }
+
+// Ajout des écouteurs d'événements aux boutons de fermeture
+closeButtons.forEach((button, index) => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        closeActiveModal();
+        console.log(`Bouton de fermeture ${index + 1} cliqué`);
+    });
+});
+
 // Gestion du clic en dehors des modales
 window.addEventListener('click', function(event) {
-    console.log('Clic détecté');
-    modals.forEach(modal => {
+    [modal1, modal2].forEach(modal => {
         if (event.target === modal) {
-            console.log('Clic en dehors de la modale:', modal.id);
             closeActiveModal();
+            console.log('Clic en dehors de la modale:', modal.id);
         }
     });
 });
 
 // Empêcher la propagation du clic à l'intérieur des modales
-modals.forEach(modal => {
+[modal1, modal2].forEach(modal => {
     const modalContent = modal.querySelector('.js-modale-stop');
     if (modalContent) {
         modalContent.addEventListener('click', function(event) {
-            console.log('Clic à l\'intérieur de la modale:', modal.id);
             event.stopPropagation();
+            console.log('Clic à l\'intérieur de la modale:', modal.id);
         });
     }
 });
-
-console.log('Écouteurs d\'événements ajoutés pour la fermeture des modales');
 
