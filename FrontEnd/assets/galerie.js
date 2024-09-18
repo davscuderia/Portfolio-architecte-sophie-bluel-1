@@ -9,14 +9,7 @@ async function galerie() {
     const response = await fetch("http://localhost:5678/api/works")
     //conversion des données reçus en json
     works = await response.json()
-    
-/*nv Référence à la galerie de la modale
-const galleryModale = document.querySelector('.gallery-modale');
-    
-//rajout Vider la galerie de la modale avant de la remplir
-galleryModale.innerHTML = '';fin*/
-    
-        
+          
         for (let i = 0; i < works.length; i++) {
             let title = works[i].title;
             //crée un élément figure    
@@ -37,37 +30,6 @@ galleryModale.innerHTML = '';fin*/
             console.log(img);    
         }
 }
-    /*nouveau code
-        for (let i = 0; i < works.length; i++) {
-            let work = works[i];
-            console.log("Traitement du projet:", work);
-
-    // Création de la miniature pour la modale
-        const figure = document.createElement("figure");
-        figure.dataset.id = work.id; // Stocker l'ID du projet
-
-        let img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        figure.appendChild(img);
-
-    // Création du bouton de suppression
-        const deleteBtn = document.createElement("button");
-        deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-        deleteBtn.classList.add("btn-trash");
-        deleteBtn.dataset.id = work.id;
-        figure.appendChild(deleteBtn);
-
-        galleryModale.appendChild(figure);
-
-        console.log("Miniature créée pour le projet:", work.id);
-}
-
-// Ajout des écouteurs d'événements pour les boutons de suppression
-addDeleteListeners();
-}
-//fin du nv code*/
-
 
 //pour filtrer et afficher les projets en fonction d'une catégorie
 async function filtrerParCategorie(categoryName) {
@@ -108,8 +70,20 @@ async function filtrerParCategorie(categoryName) {
         console.error("Erreur lors de la récupération des catégories :", error);
     }
 }
+/*nouveau code à tester
+boutonFiltresTous.addEventListener('click', () => {
+    galleryContainer.innerHTML = ''; // vide la galerie actuelle
+    renderGallery(works); // Fonction à créer qui affiche la galerie basée sur le tableau works actuel
+})
 
-//Gestion des boutons
+function renderGallery(worksToDisplay) {
+    worksToDisplay.forEach(work => {
+        // Créer et ajouter les éléments à galleryContainer comme dans votre fonction galerie()
+    });
+}
+//fin du nouveau code*/
+
+//Gestion des boutons fonctionnelle
 const boutonFiltresTous = document.querySelector(".btn-tous");
 const boutonObjets = document.querySelector(".btn-objets");
 const boutonApparts = document.querySelector(".btn-apparts");

@@ -15,28 +15,37 @@ const openModale = function (e) {
 }
 // récupère la réf du container de la modale
 const modaleGalleryContainer = document.querySelector('.gallery-modale');
+
 // fonction pour afficher les éléments dans la modale
 const addGalleryModale = function () {
     // Vide le conteneur avant d'ajouter des éléments (si déjà chargé)
     modaleGalleryContainer.innerHTML = '';
-    // réutilise le code de galerie
+    
+    // Réutilise le code de galerie
     works.forEach(work => {
        const figure = document.createElement("figure");
        let img = document.createElement("img");
        img.src = work.imageUrl;
        img.alt = work.title;
        figure.appendChild(img);
+       
        // Ajout de l'icône de poubelle
        const trashIcon = document.createElement("button");
        trashIcon.classList.add("btn-trash");
        trashIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`; 
-       // Ajout de l'icône de poubelle dans la figure
        figure.appendChild(trashIcon);
+
+       // Ajout de l'événement de suppression
+       trashIcon.addEventListener('click', async function () {
+           // Appel de la fonction pour supprimer l'image
+           await deleteWork(work.id, figure);
+       });
+
        // Ajout de la figure au container de la modale
        modaleGalleryContainer.appendChild(figure);  
-    })   
-    
+    });
 }
+
 
 const closeModale = function (e) {
     if (modale === null) return // stoppe si fermeture modale non existante

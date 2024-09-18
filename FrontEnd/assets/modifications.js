@@ -52,33 +52,11 @@ btnRetour.addEventListener('click', function(event) {
 });
 console.log('Écouteur ajouté au bouton Retour');
 
-//Fonction pour ajouter les écouteurs d'événements aux boutons de suppression
-function addDeleteListeners() {
-    const deleteButtons = document.querySelectorAll('.btn-trash');
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            console.log("Clic sur le bouton de suppression détecté");
-            const workId = this.dataset.id;
-            console.log("Bouton de suppression cliqué pour le projet:", workId);
-            deleteWork(workId);
-        });
-    });
-    console.log("Écouteurs de suppression ajoutés");
-}
-
-// Fonction pour supprimer un projet via l'API
-async function deleteWork(workId) {
-    console.log('Tentative de suppression du projet:', workId);
-// Dans la fonction deleteWork, avant la requête fetch
-const token = localStorage.getItem('token');
-console.log("Token d'authentification:", token);
-if (!token) {
-    console.error("Pas de token d'authentification trouvé");
-    return;
-}
+// Fonction pour supprimer un travail de l'API et du DOM
+async function deleteWork(id, figureElement) {
     try {
-        const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+        // Appel à l'API pour supprimer le travail
+        const response = await fetch(`http://localhost:5678/api/works/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -87,38 +65,23 @@ if (!token) {
         });
 
         if (response.ok) {
-            console.log("Projet supprimé avec succès:", workId);
-            // Mettre à jour le tableau works
-            works = works.filter(work => work.id != workId);
-            // Mettre à jour l'affichage
-            updateDisplay();
+            // Supprime l'élément de la modale
+            figureElement.remove();
+            
+            //pour supprimer de la galerie
+            const mainGalleryFigures = document.querySelectorAll('.gallery figure');
+            const indexToRemove = works.findIndex(work => work.id === id);
+                if (indexToRemove !== -1 && mainGalleryFigures[indexToRemove]) {
+                mainGalleryFigures[indexToRemove].remove();
+            }
+                // Mettre à jour le tableau works
+                works = works.filter(work => work.id !== id);
+            
+            console.log(`Le travail avec l'ID ${id} a été supprimé`);
         } else {
-            console.error("Erreur lors de la suppression:", response.status);
+            console.error(`Erreur lors de la suppression du travail avec l'ID ${id}`);
         }
     } catch (error) {
-        console.error("Erreur lors de la suppression:", error);
+        console.error('Erreur de connexion à l\'API', error);
     }
-}
-
-function updateDisplay() {
-    console.log("Mise à jour de l'affichage");
-    // Mettre à jour la galerie principale
-    const galleryContainer = document.querySelector('.gallery');
-    galleryContainer.innerHTML = '';
-    works.forEach(work => {
-        const figure = document.createElement("figure");
-        let img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        figure.appendChild(img);
-        const figcaption = document.createElement("figcaption");
-        figcaption.innerText = work.title;
-        figure.appendChild(figcaption);
-        galleryContainer.appendChild(figure);
-    });
-
-    // Mettre à jour la galerie de la modale
-    galerie();
-
-    console.log("Affichage mis à jour");
 }
