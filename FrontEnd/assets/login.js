@@ -38,11 +38,11 @@ const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
 // récupération du formulaire
-const form = document.querySelector("form");
+const formulaire = document.querySelector("form");
 
 console.log(passwordInput)
 
-form.addEventListener('submit', function(event) {
+formulaire.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêche le rechargement de la page
     // collecte les données du formulaire
     const email = emailInput.value;

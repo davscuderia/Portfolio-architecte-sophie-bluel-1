@@ -40,7 +40,7 @@
 					<a href="#modal1" id="retour" title="Retour vers modal 1" class="button-link">
 					<i class="fa-solid fa-arrow-left"></i> Retour
 					</a>					
-				<h2 id="titlemodal2">Ajout photo</h2>
+				<h2 id="titlemodal2">Ajout photo</h2>		
 					<form id="ajouter-photo" enctype="multipart/form-data">
 						<div class="ajout-photo">
 							<label for="file-upload" class="custom-file-upload">
@@ -55,16 +55,18 @@
 							<input type="text" id="titre" name="titre" placeholder="Entrez un titre" required>
 						</div>
 						<div class="categorie-photo">
-							<label for="categorie">Catégorie :</label>
-							<select id="categorie" name="categorie" required>
-								<option value="Objets">Objets</option>
-								<option value="Appartements">Appartements</option>
-								<option value="Hotels & restaurants">Hôtels & Restaurants</option>
+							<label for="categories">Catégorie :</label>
+							<select id="categories">
 							</select>
 						</div>
 						<div class="submit-form">
-							<input type="submit" value="Soumettre">
+							<button id="valider" type="submit">
+								Valider
+							</button>
 						</div>
+						<div id="error-message" style="color: red;">
+						</div>
+
 					</form>
 			</div>
 		</aside>
@@ -128,7 +130,7 @@
 	</nav>
 </footer>
 <script src="assets/galerie.js"></script>
-<script src="assets/login.js"></script>
+<!--<script src="assets/login.js"></script>-->
 <script src="assets/modale.js"></script>
 <script src="assets/modifications.js"></script>
 </body>
