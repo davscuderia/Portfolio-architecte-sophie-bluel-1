@@ -38,7 +38,7 @@ const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
 // récupération du formulaire
-const formulaire = document.querySelector("form");
+const formulaire = document.querySelector("#login-form");
 
 console.log(passwordInput)
 

@@ -6,7 +6,7 @@ async function deleteWork(id, figureElement) {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
-                // token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcyNjU5MzY4OCwiZXhwIjoxNzI2NjgwMDg4fQ.vUl0wFaFN_Ls1-Ej7PC1Wkvn3dsVY73anjwlQroD9kM'
+                
             }
         });
 
@@ -75,7 +75,7 @@ form.addEventListener('submit', async function(event) {
     formData.append('image', file);
     formData.append('title', title);
     formData.append('category', categoryId);
-
+    //appel à l'api
     try {
         const response = await fetch('http://localhost:5678/api/works', {
             method: 'POST',
@@ -84,12 +84,34 @@ form.addEventListener('submit', async function(event) {
             },
             body: formData
         });
-        response.ok ? console.log('Formulaire envoyé avec succès') : console.log('Erreur lors de l\'envoi :', response.status);
+    
+    response.ok ? console.log('Formulaire envoyé avec succès') : console.log('Erreur lors de l\'envoi :', response.status) ;
+    if (response.ok) {
+        const newProject = await response.json();
+        addProjectToGalleries(newProject);
+        console.log('Nouveau projet ajouté avec succès');
+        closeActiveModal();
+    } 
     } catch (error) {
         console.error('Erreur réseau :', error);
     }
+
 });
 
+// Fonction pour afficher l'aperçu de l'image
+function displayImagePreview(file) { //prend un fichier en paramètre
+    const reader = new FileReader(); //crée un nouvel objet pour lire le contenu
+    reader.onload = e => {
+        document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 200px;">`;
+    };
+    //lecture du fichier et conversion pour être utilisé comme source
+    reader.readAsDataURL(file);
+}
+// Écouteur d'événements pour l'input file
+document.getElementById('file-upload').addEventListener('change', event => {
+    const file = event.target.files[0]; //récupère le 1er fichier
+    if (file) displayImagePreview(file);
+});
 // Validation du fichier
 function validateFile(file) {
     const validTypes = ['image/jpeg', 'image/png'];
@@ -100,6 +122,35 @@ function validateFile(file) {
 
     console.log('Fichier valide');
     return true;
+}
+
+// Fonction pour ajouter un projet à la galerie principale et à la modale
+function addProjectToGalleries(project) {
+    console.log('Ajout du projet aux galeries:', project);
+
+    // Ajouter à la galerie principale
+    const mainGallery = document.querySelector('.gallery');
+    const figureMain = document.createElement('figure');
+    figureMain.innerHTML = `
+        <img src="${project.imageUrl}" alt="${project.title}">
+        <figcaption>${project.title}</figcaption>
+    `;
+    mainGallery.appendChild(figureMain);
+    console.log('Projet ajouté à la galerie principale');
+
+    // Ajouter à la galerie modale
+    const modalGallery = document.querySelector('.gallery-modale');
+    const figureModal = document.createElement('figure');
+    figureModal.innerHTML = `
+        <img src="${project.imageUrl}" alt="${project.title}">
+        <button class="btn-trash"><i class="fa-solid fa-trash-can"></i></button>
+    `;
+    modalGallery.appendChild(figureModal);
+    console.log('Projet ajouté à la galerie modale');
+
+    // Ajouter au tableau works
+    works.push(project);
+    console.log('Projet ajouté au tableau works');
 }
 
 //gestion du clic sur le bouton "Retour"
