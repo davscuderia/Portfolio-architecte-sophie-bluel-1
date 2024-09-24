@@ -48,7 +48,7 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
+	
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -56,23 +56,39 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 150px;
+	height: 42px;
+}
+.bouton-login {
+	text-decoration: none;
 }
 section {
 	margin: 50px 0
 }
+
+
+
 /* concerne les nouveaux boutons projets */
 .boutons-filtres {
-text-align: center;
-
+	margin: 0px 427px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.btn-h-et-resto {
+	width: 198px;
+}
+.btn-apparts {
+	width: 157px;
 }
 .btn-tous, .btn-objets, .btn-apparts, .btn-h-et-resto {
-	
+	height: 37px;
+  	max-width: 198px;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: #1d6154;
 	padding: 5px 10px;	
-	margin : 2em auto;
+	min-width: 100px;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	background: none;
@@ -105,6 +121,7 @@ background: none;
 border: none;
 }
 /* Cibler la galerie dans la modale */
+
 .gallery-modale {
     display: grid; /* Utilise une grille pour organiser les miniatures */
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Ajuste automatiquement le nombre de colonnes */
@@ -145,14 +162,16 @@ h1 {
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+	line-height: 26.4px;
+
 }
 
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+	line-height: 11.73px;
 }
 
 h2{
@@ -165,31 +184,45 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	gap: 50px;
+	font-size: 16px;
+	padding-top: 5px;
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	
 }
-
+.insta {
+	width: 22px;
+}
 li:hover {
 	color: #B1663C;
 }
 #introduction {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
-#introduction figure {
-	flex: 1
-}
+
 #introduction img {
 	display: block;
-	margin: auto;
+	
 	width: 80%;
+}
+.photo-sb {
+	margin-left:245px;
+	max-width: 474px;
+  	max-height: 355px;
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	flex-wrap: wrap;
+  	display: flex;
+  	line-height: 16.42px;
+	margin-left: 72px;
+	margin-right: 245px;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -201,9 +234,10 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+	margin-top: 139px;
 }
 .gallery {
-	width: 100%;
+	margin: 55px 245px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -216,7 +250,8 @@ li:hover {
 }
 /*Ajout du selecteur login pour unifier la mise en page*/
 #contact, #login {
-	width: 50%;
+	width: 100%;
+	max-width: 379px;
 	margin: auto;
 }
 #contact, #login > * {
@@ -231,6 +266,7 @@ li:hover {
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
 }
 #login form p {
 	text-align: center; /*centre le texte sur la page*/
@@ -248,6 +284,14 @@ li:hover {
 #contact textarea, #login textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#name, #email, #password, #message {
+	width: 379px;
+}	
+.mdp-oublie {
+		display: block; /* Permet de centrer le lien en tant qu'élément de bloc */
+		text-align: center; /* Centre le texte à l'intérieur du bloc */
+		margin-top: 15px; /* Ajoute un espace au-dessus du lien */
 }
 
 input[type="submit"]{
