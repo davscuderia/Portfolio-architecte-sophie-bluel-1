@@ -191,8 +191,11 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-	
 }
+nav ul li.login {
+    font-weight: bold;
+}
+
 .insta {
 	width: 22px;
 }
@@ -254,7 +257,7 @@ li:hover {
 	max-width: 379px;
 	margin: auto;
 }
-#contact, #login > * {
+#contact, #login {
 	text-align: center;
 
 }
@@ -268,10 +271,13 @@ li:hover {
 	flex-direction: column;
 	align-items: flex-start;
 }
-#login form p {
+#login-form p {
 	text-align: center; /*centre le texte sur la page*/
+	margin-left: 120px;
 }
-
+#login-form a:visited {
+    color: #3D3D3D; /* Couleur du lien visité */
+}
 #contact input, #login input {
 	height: 50px;
 	font-size: 1.2em;
@@ -288,11 +294,7 @@ li:hover {
 #name, #email, #password, #message {
 	width: 379px;
 }	
-.mdp-oublie {
-		display: block; /* Permet de centrer le lien en tant qu'élément de bloc */
-		text-align: center; /* Centre le texte à l'intérieur du bloc */
-		margin-top: 15px; /* Ajoute un espace au-dessus du lien */
-}
+
 
 input[type="submit"]{
 	font-family: 'Syne';
