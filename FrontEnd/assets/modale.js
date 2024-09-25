@@ -91,8 +91,8 @@ console.log('Boutons de fermeture trouvés:', closeButtons.length);
 // Fonction pour basculer entre les modales
 function toggleModals() {
     const modal1Visible = modal1.style.display !== 'none'; 
-    modal1.style.display = modal1Visible ? 'none' : 'block';
-    modal2.style.display = modal1Visible ? 'block' : 'none';
+    modal1.style.display = modal1Visible ? 'none' : 'flex';
+    modal2.style.display = modal1Visible ? 'flex' : 'none';
     console.log('Modal 1:', modal1.style.display, 'Modal 2:', modal2.style.display);
 }
 
@@ -106,7 +106,7 @@ btnAjouter.addEventListener('click', function(event) {
 // Fonction pour fermer la modale active
 function closeActiveModal() {
     [modal1, modal2].forEach(modal => {
-        if (modal.style.display === 'block') {
+        if (modal.style.display === 'flex') {
             modal.style.display = 'none';
             console.log('Modale fermée:', modal.id);
         }

@@ -70,18 +70,6 @@ async function filtrerParCategorie(categoryName) {
         console.error("Erreur lors de la récupération des catégories :", error);
     }
 }
-/*nouveau code à tester
-boutonFiltresTous.addEventListener('click', () => {
-    galleryContainer.innerHTML = ''; // vide la galerie actuelle
-    renderGallery(works); // Fonction à créer qui affiche la galerie basée sur le tableau works actuel
-})
-
-function renderGallery(worksToDisplay) {
-    worksToDisplay.forEach(work => {
-        // Créer et ajouter les éléments à galleryContainer comme dans votre fonction galerie()
-    });
-}
-//fin du nouveau code*/
 
 //Gestion des boutons fonctionnelle
 const boutonFiltresTous = document.querySelector(".btn-tous");

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (boutonModifier) {
                 // afficher le bouton
-                boutonModifier.style.display = 'block'; // Rendre le bouton visible
+                boutonModifier.style.display = 'flex'; // Rendre le bouton visible
             }
             
             // Si connecté, remplacer "login" par "logout"
