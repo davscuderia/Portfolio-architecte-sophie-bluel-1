@@ -82,15 +82,11 @@ section {
     margin: 0; /* Retire les marges par défaut */
 }
 .js-modale-btn {
-	display: flex;
 	justify-content:center;
 	gap: 5px;
 	text-decoration: none;
 }
-.js-modale-btn :visited {
-	color: #000000;
 
-}
 .boutons-filtres {
 	margin: 0px 427px;
 	display: flex;
@@ -128,6 +124,25 @@ section {
 	height: 100%;
 	background: rgba(0,0,0,0.7 );
 }
+#titlemodal {
+	font-family: inherit;
+	font-size: 30px;
+	color: #000;
+	font-weight: initial;
+	margin: 40px 0 20px;
+}
+
+.modal-wrapper .js-modale-stop {
+	
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-bottom: 110%;
+	max-width: 630px;
+	width: 100%;
+	max-height: 688px;
+	height: 100%;
+  }
 .modal-wrapper {
 	overflow: auto;
 	width: 630px;
@@ -136,17 +151,23 @@ section {
 	border-radius: 10px;
 	background-color: #fff;
 }
+.modal1-header {
+	display: flex;
+	justify-content: center;
+}
 .js-modale-close {
-	position: relative;
-	left: 98%;
+	position: absolute;
+	left: 70%;
 	background: none;
 	border: none;
+	font-size: 22px;
 }
 /* Cibler la galerie dans la modale */
 
 .gallery-modale {
     display: grid; /* Utilise une grille pour organiser les miniatures */
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Ajuste automatiquement le nombre de colonnes */
+    grid: auto-flow;
+	grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Ajuste automatiquement le nombre de colonnes */
     gap: 5px; /* Ajoute un espacement entre les images */
     padding: 5px; /* Ajoute un peu de padding autour de la galerie */
 }
@@ -154,13 +175,22 @@ section {
 .gallery-modale figure {
     margin: 0;
     padding: 0;
+	position: relative;
 }
 /* Ajuster la taille des images pour qu'elles soient des miniatures */
 .gallery-modale img {
-    width: 77px; /* Largeur des miniatures */
-    height: 103px; /* Hauteur des miniatures */
+	display: block;
+    width: 90%; /* Largeur des miniatures */
+    height: auto; /* Hauteur des miniatures */
     object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
     cursor: pointer; /* Change le curseur lorsque l'utilisateur survole une image */
+}
+.btn-trash {
+	position: absolute;
+	top: 5px;
+	right: 15%;
+	background-color: black;
+	color: white;
 }
 .button-link {
     display: inline-block;
@@ -256,11 +286,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-/*#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-	margin-top: 139px;
-}*/
+
 .gallery {
 	margin: 55px 245px;
 	display: grid;
