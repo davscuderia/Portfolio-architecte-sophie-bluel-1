@@ -71,7 +71,11 @@ formulaire.addEventListener('submit', function(event) {
             
         } else {
             // Afficher un message d'erreur
-            alert("Email ou mot de passe incorrect");
+            //alert("Email ou mot de passe incorrect");
+            //alert('test')
+        let messageErreur = document.createElement("p")
+            messageErreur.innerText = "Email ou mot de passe incorrect"
+            document.getElementById("login-form").appendChild(messageErreur)
         }
     })
     .catch(error => {

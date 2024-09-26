@@ -102,8 +102,10 @@ form.addEventListener('submit', async function(event) {
 function displayImagePreview(file) { //prend un fichier en paramètre
     const reader = new FileReader(); //crée un nouvel objet pour lire le contenu
     reader.onload = e => {
-        document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 200px;">`;
+        document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 193px;">`;
+        document.getElementById('btn-ajouter').style.display = "none"
     };
+
     //lecture du fichier et conversion pour être utilisé comme source
     reader.readAsDataURL(file);
 }

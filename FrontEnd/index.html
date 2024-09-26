@@ -36,14 +36,18 @@
 			</div>
 		</aside>
 		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2" style="display:none;">
-			<div class="modal-wrapper js-modale-stop">	
-				<button class="js-modale-close" title= "Fermer la boite modale">
-					<i class="fa-solid fa-xmark"></i>
-				</button>	
-					<a href="#modal1" id="retour" title="Retour vers modal 1" class="button-link">
-					<i class="fa-solid fa-arrow-left"></i> Retour
+			<div class="modal-wrapper js-modale-stop">
+				<div class="modal2-header">	
+					<button class="js-modale-close" title= "Fermer la boite modale">
+						<i class="fa-solid fa-xmark"></i>
+					</button>	
+					<a href="#modal1" id="retour" title="Retour vers modal 1">
+						<button class="bouton-retour">	
+						<i class="fa-solid fa-arrow-left"></i>
+						</button>
 					</a>					
-				<h2 id="titlemodal2">Ajout photo</h2>		
+					<h2 id="titlemodal2">Ajout photo</h2>
+				</div>	
 					<form id="ajouter-photo" enctype="multipart/form-data">
 						<div class="ajout-photo">
 							<label for="file-upload" class="custom-file-upload">
@@ -52,18 +56,18 @@
 								<span class="info">Formats acceptés : JPG, PNG (4 Mo max)</span>
 							</label>
 							<input id="file-upload" type="file" accept=".jpg,.jpeg,.png" style="display: none;">
+							<div id="image-preview">							
+							</div>
 						</div>
-						<div id="image-preview">							
-						</div>
-						<div class="titre-photo">
 							<label for="titre">Titre :</label>
-							<input type="text" id="titre" name="titre" placeholder="Entrez un titre" required>
+						<div class="titre-photo">
+							<input type="text" id="titre" name="titre" placeholder="" required>
 						</div>
 						<div class="categorie-photo">
 							<label for="categories">Catégorie :</label>
-							<select id="categories">
-							</select>
+							<select id="categories"></select>
 						</div>
+							<div class="separator"></div>
 						<div class="submit-form">
 							<button id="valider" type="submit">
 								Valider
