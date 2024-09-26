@@ -88,10 +88,11 @@ section {
 }
 
 .boutons-filtres {
-	margin: 0px 427px;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	gap: 10px;
+  	margin: 20px 0;
 }
 .btn-h-et-resto {
 	width: 198px;
@@ -132,17 +133,6 @@ section {
 	margin: 40px 0 20px;
 }
 
-.modal-wrapper .js-modale-stop {
-	
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	margin-bottom: 110%;
-	max-width: 630px;
-	width: 100%;
-	max-height: 688px;
-	height: 100%;
-  }
 .modal-wrapper {
 	overflow: auto;
 	width: 630px;
@@ -150,14 +140,21 @@ section {
 	padding: 40px;
 	border-radius: 10px;
 	background-color: #fff;
+	position: relative;
 }
 .modal1-header {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+    position: relative;
+	margin-bottom: 30px;
 }
 .js-modale-close {
 	position: absolute;
-	left: 70%;
+	top: 10px;
+  	right: 10px;
+  	width: 24px;
+  	height: 24px;
 	background: none;
 	border: none;
 	font-size: 22px;
@@ -166,42 +163,67 @@ section {
 
 .gallery-modale {
     display: grid; /* Utilise une grille pour organiser les miniatures */
-    grid: auto-flow;
-	grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Ajuste automatiquement le nombre de colonnes */
-    gap: 5px; /* Ajoute un espacement entre les images */
-    padding: 5px; /* Ajoute un peu de padding autour de la galerie */
+    grid-template-columns: repeat(5, 77px); /* Ajuste automatiquement le nombre de colonnes */
+    grid-template-rows: repeat(3, 103px); 
+	gap: 10px; /* Ajoute un espacement entre les images */
+    padding: 10px; /* Ajoute un peu de padding autour de la galerie */
+	justify-content: center;
+	align-content: start;
+	max-width: 425px; /* (77px * 5) + (10px * 4) pour les gaps */
+	margin: 0 auto; /* Centre la galerie dans son conteneur */
+	grid-row-gap: 25px; /* Augmente l'espace entre les lignes */
+
 }
 /* Styliser chaque figure contenant l'image */
 .gallery-modale figure {
     margin: 0;
     padding: 0;
 	position: relative;
+	width: 77px;
+    height: 103px;
+	margin-bottom: 20px;
 }
 /* Ajuster la taille des images pour qu'elles soient des miniatures */
 .gallery-modale img {
 	display: block;
-    width: 90%; /* Largeur des miniatures */
-    height: auto; /* Hauteur des miniatures */
+    width: 77px;
+    height: 103px;
     object-fit: cover; /* Maintient les proportions de l'image en remplissant l'espace */
     cursor: pointer; /* Change le curseur lorsque l'utilisateur survole une image */
 }
 .btn-trash {
 	position: absolute;
-	top: 5px;
-	right: 15%;
+	top: 6px;
+	right: 10%;
 	background-color: black;
 	color: white;
+	cursor: pointer;
+	padding: 3px;
+	border: none;
+}
+.separator {
+    width: 420px;
+    height: 1px;
+    background-color: #B3B3B3; /* Couleur gris clair, ajustez selon vos besoins */
+    margin: 85px auto; /* Espace au-dessus et en-dessous, et centrage horizontal */
 }
 .button-link {
-    display: inline-block;
-    padding: 10px 20px;
+	position: absolute;
+    display: flex;
+	bottom: 50px;
+	left: 33%;
+	width: 100%;
+    max-width: 237px;
+    height: 36px;
+    padding: 0;
+	justify-content: center;
+    align-items: center;
     background-color: #1D6154;
     color: white;
-    text-align: center;
-    border-radius: 5px;
+    border-radius: 20px;
     text-decoration: none; /* Retire la décoration par défaut du lien */
     font-weight: bold;
-    cursor: pointer;
+	font-size: 16px;   
 }
 
 .button-link:hover {
