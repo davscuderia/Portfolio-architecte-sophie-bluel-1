@@ -22,8 +22,6 @@ async function deleteWork(id, figureElement) {
             }
                 // Mettre à jour le tableau works
                 works = works.filter(work => work.id !== id);
-            
-            console.log(`Le travail avec l'ID ${id} a été supprimé`);
         } else {
             console.error(`Erreur lors de la suppression du travail avec l'ID ${id}`);
         }
@@ -38,10 +36,9 @@ const btnAjouterPhoto = document.getElementById('btn-ajouter');
     btnAjouterPhoto.addEventListener('click', function() {
     console.log('Bouton + Ajouter photo cliqué');
     fileUpload.click(); // Déclenche le clic sur l'input file caché
-    });
+    
+});
 
-// Vérifier si l'écouteur d'événements est bien ajouté
-console.log('Écouteur d\'événements ajouté au bouton + Ajouter photo');
 // Sélectionner le formulaire et le bouton de soumission
 const form = document.getElementById('ajouter-photo');
 //nouveau code
@@ -55,6 +52,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Erreur chargement catégories:', error);
     }
 });
+// Utilisez cette fonction lors de l'affichage de l'aperçu
+function togglePreview(show) {
+    const preview = document.getElementById('image-preview');
+    const existingElements = document.querySelectorAll('.cadre-apercu'); // Ajustez le sélecteur selon vos besoins
+
+    if (show) {
+        preview.style.display = 'flex';
+        existingElements.forEach(el => el.style.display = 'none');
+    } else {
+        preview.style.display = 'none';
+        existingElements.forEach(el => el.style.display = '');
+    }
+}
+
+// Utilisez cette fonction lors de l'affichage de l'aperçu
+// Par exemple : togglePreview(true) pour afficher l'aperçu et cacher les autres éléments
+
+// Fonction pour réinitialiser le formulaire et l'aperçu
+function resetFormAndPreview() {
+    // Réinitialiser le formulaire
+    document.getElementById('ajouter-photo').reset();
+
+    // Vider l'aperçu de l'image
+    document.getElementById('image-preview').innerHTML = '';
+    togglePreview(false); // Cache l'aperçu et réaffiche les autres éléments
+    console.log('Formulaire et aperçu réinitialisés');
+}
 
 // Gérer la soumission du formulaire
 form.addEventListener('submit', async function(event) {
@@ -88,9 +112,12 @@ form.addEventListener('submit', async function(event) {
     response.ok ? console.log('Formulaire envoyé avec succès') : console.log('Erreur lors de l\'envoi :', response.status) ;
     if (response.ok) {
         const newProject = await response.json();
-        addProjectToGalleries(newProject);
+        addProjectToGalleries(newProject); //maj galerie
+        form.reset();
         console.log('Nouveau projet ajouté avec succès');
+        
         closeActiveModal();
+        resetFormAndPreview(); // Appel de la nouvelle fonction
     } 
     } catch (error) {
         console.error('Erreur réseau :', error);
@@ -102,18 +129,23 @@ form.addEventListener('submit', async function(event) {
 function displayImagePreview(file) { //prend un fichier en paramètre
     const reader = new FileReader(); //crée un nouvel objet pour lire le contenu
     reader.onload = e => {
-        document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 193px;">`;
-        document.getElementById('btn-ajouter').style.display = "none"
+        document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}" style="max-width: 100%; max-height: 169px;">`;
+        togglePreview(true);
     };
-
+   
     //lecture du fichier et conversion pour être utilisé comme source
     reader.readAsDataURL(file);
 }
+
+
 // Écouteur d'événements pour l'input file
 document.getElementById('file-upload').addEventListener('change', event => {
     const file = event.target.files[0]; //récupère le 1er fichier
-    if (file) displayImagePreview(file);
+    if (file) {displayImagePreview(file);
+    //togglePreview(true); // Affiche l'aperçu et cache les autres éléments
+    }
 });
+
 // Validation du fichier
 function validateFile(file) {
     const validTypes = ['image/jpeg', 'image/png'];
@@ -145,8 +177,7 @@ function addProjectToGalleries(project) {
     const figureModal = document.createElement('figure');
     figureModal.innerHTML = `
         <img src="${project.imageUrl}" alt="${project.title}">
-        <button class="btn-trash"><i class="fa-solid fa-trash-can"></i></button>
-    `;
+        <button class="btn-trash"><i class="fa-solid fa-trash-can"></i></button>`;
     modalGallery.appendChild(figureModal);
     console.log('Projet ajouté à la galerie modale');
 
@@ -157,9 +188,7 @@ function addProjectToGalleries(project) {
 
 //gestion du clic sur le bouton "Retour"
 btnRetour.addEventListener('click', function(event) {
-    console.log('Clic sur le bouton Retour');
-    event.preventDefault(); // Empêcher le comportement par défaut du lien
-    toggleModals(); // Basculer entre les modales
+event.preventDefault(); // Empêcher le comportement par défaut du lien
+toggleModals(); // Basculer entre les modales
 });
-console.log('Écouteur ajouté au bouton Retour');
 

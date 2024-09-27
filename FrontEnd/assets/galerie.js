@@ -27,7 +27,6 @@ async function galerie() {
         
             galleryContainer.appendChild(figure);
         
-            console.log(img);    
         }
 }
 
@@ -37,9 +36,7 @@ async function filtrerParCategorie(categoryName) {
         //récupère les catégories depuis l'api
         const response = await fetch("http://localhost:5678/api/categories");
         const categories = await response.json(); 
-
-        console.log(categories);
-
+       
         // Cherche la catégorie par nom
         const category = categories.find(cat => cat.name === categoryName);
         // si la catégorie existe, on filtre et affiche les projets

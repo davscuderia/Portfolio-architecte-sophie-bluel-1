@@ -50,12 +50,14 @@
 				</div>	
 					<form id="ajouter-photo" enctype="multipart/form-data">
 						<div class="ajout-photo">
+							<div class="cadre-apercu">
 							<label for="file-upload" class="custom-file-upload">
-								<i class="fa-regular fa-image"></i>
+								<i class="fa-regular fa-image" id="no-image"></i>
 								<input type="button" id="btn-ajouter" value="+ Ajouter photo">
-								<span class="info">Formats acceptés : JPG, PNG (4 Mo max)</span>
+								<span class="info" id="text-info">jpg, png : 4mo max</span>
 							</label>
 							<input id="file-upload" type="file" accept=".jpg,.jpeg,.png" style="display: none;">
+							</div>
 							<div id="image-preview">							
 							</div>
 						</div>

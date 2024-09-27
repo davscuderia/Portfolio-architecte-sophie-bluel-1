@@ -40,8 +40,6 @@ const passwordInput = document.querySelector("#password");
 // récupération du formulaire
 const formulaire = document.querySelector("#login-form");
 
-console.log(passwordInput)
-
 formulaire.addEventListener('submit', function(event) {
     event.preventDefault(); // Empêche le rechargement de la page
     // collecte les données du formulaire
@@ -67,12 +65,11 @@ formulaire.addEventListener('submit', function(event) {
             localStorage.setItem("token", data.token);
             // Rediriger l'utilisateur vers la page d'accueil
             window.location.href = "index.html";
-            console.log("Redirection vers : index.html");
-            
+                       
         } else {
             // Afficher un message d'erreur
-            //alert("Email ou mot de passe incorrect");
-            //alert('test')
+            alert("Email ou mot de passe incorrect");
+            alert('test')
         let messageErreur = document.createElement("p")
             messageErreur.innerText = "Email ou mot de passe incorrect"
             document.getElementById("login-form").appendChild(messageErreur)

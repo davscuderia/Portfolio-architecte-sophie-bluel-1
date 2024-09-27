@@ -84,23 +84,17 @@ const modal2 = document.getElementById('modal2');
 const btnRetour = document.getElementById('retour');
 const closeButtons = document.querySelectorAll('.js-modale-close');
 
-// Vérifier si l'élément est bien trouvé
-console.log('Élément file-upload trouvé');
-console.log('Boutons de fermeture trouvés:', closeButtons.length);
-
 // Fonction pour basculer entre les modales
 function toggleModals() {
     const modal1Visible = modal1.style.display !== 'none'; 
     modal1.style.display = modal1Visible ? 'none' : 'flex';
-    modal2.style.display = modal1Visible ? 'flex' : 'none';
-    console.log('Modal 1:', modal1.style.display, 'Modal 2:', modal2.style.display);
+    modal2.style.display = modal1Visible ? 'flex' : 'none';    
 }
 
 // Gestion du clic sur le bouton "Ajouter une photo"
 btnAjouter.addEventListener('click', function(event) {
     event.preventDefault();
     toggleModals();
-    console.log('Clic sur "Ajouter une photo"');
 });
 
 // Fonction pour fermer la modale active
@@ -108,7 +102,6 @@ function closeActiveModal() {
     [modal1, modal2].forEach(modal => {
         if (modal.style.display === 'flex') {
             modal.style.display = 'none';
-            console.log('Modale fermée:', modal.id);
         }
     });
 }
@@ -118,7 +111,6 @@ closeButtons.forEach((button, index) => {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         closeActiveModal();
-        console.log(`Bouton de fermeture ${index + 1} cliqué`);
     });
 });
 
@@ -127,8 +119,7 @@ window.addEventListener('click', function(event) {
     [modal1, modal2].forEach(modal => {
         if (event.target === modal) {
             closeActiveModal();
-            console.log('Clic en dehors de la modale:', modal.id);
-        }
+            }
     });
 });
 
@@ -138,7 +129,6 @@ window.addEventListener('click', function(event) {
     if (modalContent) {
         modalContent.addEventListener('click', function(event) {
             event.stopPropagation();
-            console.log('Clic à l\'intérieur de la modale:', modal.id);
         });
     }
 });
