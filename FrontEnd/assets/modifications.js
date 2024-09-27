@@ -34,7 +34,6 @@ async function deleteWork(id, figureElement) {
 const btnAjouterPhoto = document.getElementById('btn-ajouter');
     // Ajouter un écouteur d'événements au bouton "+ Ajouter photo"
     btnAjouterPhoto.addEventListener('click', function() {
-    console.log('Bouton + Ajouter photo cliqué');
     fileUpload.click(); // Déclenche le clic sur l'input file caché
     
 });
@@ -77,7 +76,7 @@ function resetFormAndPreview() {
     // Vider l'aperçu de l'image
     document.getElementById('image-preview').innerHTML = '';
     togglePreview(false); // Cache l'aperçu et réaffiche les autres éléments
-    console.log('Formulaire et aperçu réinitialisés');
+    
 }
 
 // Gérer la soumission du formulaire
@@ -114,8 +113,7 @@ form.addEventListener('submit', async function(event) {
         const newProject = await response.json();
         addProjectToGalleries(newProject); //maj galerie
         form.reset();
-        console.log('Nouveau projet ajouté avec succès');
-        
+                
         closeActiveModal();
         resetFormAndPreview(); // Appel de la nouvelle fonction
     } 
@@ -153,15 +151,12 @@ function validateFile(file) {
 
     if (!validTypes.includes(file.type)) return console.log('Type de fichier non valide'), false;
     if (file.size > maxSize) return console.log('Fichier trop volumineux'), false;
-
-    console.log('Fichier valide');
     return true;
 }
 
 // Fonction pour ajouter un projet à la galerie principale et à la modale
 function addProjectToGalleries(project) {
-    console.log('Ajout du projet aux galeries:', project);
-
+    
     // Ajouter à la galerie principale
     const mainGallery = document.querySelector('.gallery');
     const figureMain = document.createElement('figure');
@@ -170,8 +165,7 @@ function addProjectToGalleries(project) {
         <figcaption>${project.title}</figcaption>
     `;
     mainGallery.appendChild(figureMain);
-    console.log('Projet ajouté à la galerie principale');
-
+    
     // Ajouter à la galerie modale
     const modalGallery = document.querySelector('.gallery-modale');
     const figureModal = document.createElement('figure');
@@ -179,11 +173,9 @@ function addProjectToGalleries(project) {
         <img src="${project.imageUrl}" alt="${project.title}">
         <button class="btn-trash"><i class="fa-solid fa-trash-can"></i></button>`;
     modalGallery.appendChild(figureModal);
-    console.log('Projet ajouté à la galerie modale');
-
+    
     // Ajouter au tableau works
     works.push(project);
-    console.log('Projet ajouté au tableau works');
 }
 
 //gestion du clic sur le bouton "Retour"
