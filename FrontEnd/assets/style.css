@@ -212,7 +212,7 @@ footer nav ul {
 	border-radius: 10px;
 	background-color: #fff;
 	position: absolute;
-	top: 560px;
+	top: auto;
 	padding: 0;
 }
 .modal1-header, .modal2-header {
