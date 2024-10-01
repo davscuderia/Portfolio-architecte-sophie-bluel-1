@@ -6,48 +6,45 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	  <!-- our project just needs Font Awesome Solid + Brands -->
-	  <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
-	  <link href="/assets/fontawesome/css/brands.css" rel="stylesheet" />
-	  <link href="/assets/fontawesome/css/solid.css" rel="stylesheet" />
-	<meta name="description" content="">
+	<link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
+	<link href="/assets/fontawesome/css/brands.css" rel="stylesheet" />
+	<link href="/assets/fontawesome/css/solid.css" rel="stylesheet" />
+	<meta name="description" content="" type="description">
 	<link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-	<a href="#modal1" class="js-modale"></a>
-		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
-			<div class="modal-wrapper js-modale-stop">
-				<div class="modal1-header">
-					<button class="js-modale-close" title= "Fermer la boite modale">
-					<i class="fa-solid fa-xmark"></i>
-					</button>
-					<h2 id="titlemodal">Galerie photo</h2>
-				</div>
-				<div class="gallery-modale">
-				</div>
-				<div class="separator"></div>		
-				<a href="#modal2" id="ajouter" title="Cliquez pour ajouter" class="button-link">
-					Ajouter une photo
-				</a>
+	<aside id="deletemodal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal"> 
+		<div class="modal-wrapper js-modale-stop">
+			<div class="deletemodal-header">
+				<button class="js-modale-close" title= "Fermer la boite modale">
+				<i class="fa-solid fa-xmark"></i>
+				</button>
+				<h2 id="titlemodal">Galerie photo</h2>
 			</div>
-		</aside>
-		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2" style="display:none;">
+			<div class="gallery-modale">
+			</div>
+			<div class="separator"></div>		
+			<a href="#addmodal" id="ajouter" title="Cliquez pour ajouter" class="button-link">
+				Ajouter une photo
+			</a>
+		</div>
+	</aside>
+		<aside id="addmodal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal2">
 			<div class="modal-wrapper js-modale-stop">
-				<div class="modal2-header">	
-					<button class="js-modale-close" title= "Fermer la boite modale">
-						<i class="fa-solid fa-xmark"></i>
-					</button>	
-					<a href="#modal1" id="retour" title="Retour vers modal 1">
-						<button class="bouton-retour">	
-						<i class="fa-solid fa-arrow-left"></i>
-						</button>
-					</a>					
-					<h2 id="titlemodal2">Ajout photo</h2>
-				</div>	
+				<div class="modal-content">
+					<div class="addmodal-header">	
+						<button class="js-modale-close" title= "Fermer la boite modale">
+							<i class="fa-solid fa-xmark"></i>
+						</button>	
+						<a href="#deletemodal" id="retour" title="Retour vers modal 1">
+							<button class="bouton-retour">	
+							<i class="fa-solid fa-arrow-left"></i>
+							</button>
+						</a>					
+						<h2 id="titlemodal2">Ajout photo</h2>
+					</div>	
 					<form id="ajouter-photo" enctype="multipart/form-data">
 						<div class="ajout-photo">
 							<div class="cadre-apercu">
@@ -56,14 +53,14 @@
 								<input type="button" id="btn-ajouter" value="+ Ajouter photo">
 								<span class="info" id="text-info">jpg, png : 4mo max</span>
 							</label>
-							<input id="file-upload" type="file" accept=".jpg,.jpeg,.png" style="display: none;">
+							<input id="file-upload" type="file" accept=".jpg,.jpeg,.png">
 							</div>
 							<div id="image-preview">							
 							</div>
 						</div>
 							<label for="titre">Titre :</label>
 						<div class="titre-photo">
-							<input type="text" id="titre" name="titre" placeholder="" required>
+							<input type="text" id="titre" name="titre">
 						</div>
 						<div class="categorie-photo">
 							<label for="categories">Catégorie :</label>
@@ -75,10 +72,8 @@
 								Valider
 							</button>
 						</div>
-						<div id="error-message" style="color: red;">
-						</div>
-
 					</form>
+				</div>	
 			</div>
 		</aside>
 <header>
@@ -109,7 +104,7 @@
 	<section id="portfolio">
 		<div class="titre-et-modif">
 		<h2>Mes Projets</h2>
-		<a href="#modal1" class="js-modale-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</a> <!--doit apparaitre uniquement en mode édition-->
+		<a href="#deletemodal" class="js-modale-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</a> <!--doit apparaitre uniquement en mode édition-->
 		</div>
 		<div class="boutons-filtres" id="boutonsFiltres"> <!--doit disparaitre en mode édition-->
 			<button class="btn-tous">Tous</button>
@@ -134,7 +129,6 @@
 		</form>
 	</section>
 </main>
-
 <footer>
 	<nav>
 		<ul>

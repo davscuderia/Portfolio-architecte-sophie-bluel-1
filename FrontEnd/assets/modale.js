@@ -3,7 +3,7 @@ let modale = null
 const openModale = function (e) {
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute('href'))
-    target.style.display = null
+    target.classList.add('show')
     target.removeAttribute('aria-hidden')
     target.setAttribute('aria-modal', 'true')
     modale = target
@@ -13,10 +13,9 @@ const openModale = function (e) {
     // Ajoute les éléments de la galerie dans la modale
     addGalleryModale()
 }
+
 // récupère la réf du container de la modale
 const modaleGalleryContainer = document.querySelector('.gallery-modale');
-
-// fonction pour afficher les éléments dans la modale
 const addGalleryModale = function () {
     // Vide le conteneur avant d'ajouter des éléments (si déjà chargé)
     modaleGalleryContainer.innerHTML = '';
@@ -34,23 +33,19 @@ const addGalleryModale = function () {
        trashIcon.classList.add("btn-trash");
        trashIcon.innerHTML = `<i class="fa-solid fa-trash-can"></i>`; 
        figure.appendChild(trashIcon);
-
-       // Ajout de l'événement de suppression
        trashIcon.addEventListener('click', async function () {
            // Appel de la fonction pour supprimer l'image
            await deleteWork(work.id, figure);
        });
-
        // Ajout de la figure au container de la modale
        modaleGalleryContainer.appendChild(figure);  
     });
 }
 
-
 const closeModale = function (e) {
     if (modale === null) return // stoppe si fermeture modale non existante
     e.preventDefault()
-    modale.style.display = "none"
+    modale.classList.remove('show')
     modale.setAttribute('aria-hidden', 'true') //doit-être masqué
     modale.removeAttribute('aria-modal')
     modale.removeEventListener('click', closeModale)
@@ -62,13 +57,12 @@ const closeModale = function (e) {
 //permet de contenir le click pour fermer
 const stopPropagation = function (e) {
     e.stopPropagation()
-
 }
-//ouvre la fenêtre modale
+
 document.querySelectorAll('.js-modale-btn').forEach(a => {
-    a.addEventListener('click', openModale)
-   
+    a.addEventListener('click', openModale)   
 })
+
 //fermeture fenêtre au clavier
 window.addEventListener('keydown', function (e) {
     if(e.key === "Escape" || e.key === "Esc") {
@@ -76,19 +70,16 @@ window.addEventListener('keydown', function (e) {
     }
 })
 
-// Sélectionner les éléments du DOM
-const fileUpload = document.getElementById('file-upload');
 const btnAjouter = document.getElementById('ajouter');
-const modal1 = document.getElementById('modal1');
-const modal2 = document.getElementById('modal2');
-const btnRetour = document.getElementById('retour');
+const deleteModal = document.getElementById('deletemodal');
+const addModal = document.getElementById('addmodal');
 const closeButtons = document.querySelectorAll('.js-modale-close');
 
 // Fonction pour basculer entre les modales
 function toggleModals() {
-    const modal1Visible = modal1.style.display !== 'none'; 
-    modal1.style.display = modal1Visible ? 'none' : 'flex';
-    modal2.style.display = modal1Visible ? 'flex' : 'none';    
+    const modal1Visible = window.getComputedStyle(deleteModal).display !== 'none'; 
+    deleteModal.classList.toggle('show', !modal1Visible);
+    addModal.classList.toggle('show', modal1Visible);  
 }
 
 // Gestion du clic sur le bouton "Ajouter une photo"
@@ -97,11 +88,10 @@ btnAjouter.addEventListener('click', function(event) {
     toggleModals();
 });
 
-// Fonction pour fermer la modale active
 function closeActiveModal() {
-    [modal1, modal2].forEach(modal => {
-        if (modal.style.display === 'flex') {
-            modal.style.display = 'none';
+    [deleteModal, addModal].forEach(modal => {
+        if (window.getComputedStyle(modal).display !== 'none') {
+            modal.classList.remove('show');
         }
     });
 }
@@ -116,15 +106,15 @@ closeButtons.forEach((button, index) => {
 
 // Gestion du clic en dehors des modales
 window.addEventListener('click', function(event) {
-    [modal1, modal2].forEach(modal => {
+    [deleteModal, addModal].forEach(modal => {
         if (event.target === modal) {
             closeActiveModal();
-            }
+        }
     });
 });
 
 // Empêcher la propagation du clic à l'intérieur des modales
-[modal1, modal2].forEach(modal => {
+[deleteModal, addModal].forEach(modal => {
     const modalContent = modal.querySelector('.js-modale-stop');
     if (modalContent) {
         modalContent.addEventListener('click', function(event) {

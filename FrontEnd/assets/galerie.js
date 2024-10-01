@@ -1,49 +1,39 @@
 document.addEventListener("DOMContentLoaded", galerie);
-// récuperer la référence de la balise gallery
 const galleryContainer = document.querySelector('.gallery');
 //Déclare works pour être accessible dans tout le code
 let works = [];
 
-// pour charger la galerie
 async function galerie() {
     const response = await fetch("http://localhost:5678/api/works")
     //conversion des données reçus en json
     works = await response.json()
           
-        for (let i = 0; i < works.length; i++) {
-            let title = works[i].title;
-            //crée un élément figure    
-            const figure = document.createElement("figure");
-            // ajoute les images
-            let img = document.createElement("img");
-            img.src = works[i].imageUrl;
-            // attribut alt pour l'accessibilité
-            img.alt = title; 
-            figure.appendChild(img);
-            // ajoute le texte des images
-            const figcaption = document.createElement("figcaption");
-            figcaption.innerText = title;
-            figure.appendChild(figcaption);
-        
-            galleryContainer.appendChild(figure);
-        
-        }
+    for (let i = 0; i < works.length; i++) {
+        let title = works[i].title;
+        //crée un élément figure    
+        const figure = document.createElement("figure");
+        // ajoute les images
+        let img = document.createElement("img");
+        img.src = works[i].imageUrl;
+        // attribut alt pour l'accessibilité
+        img.alt = title; 
+        figure.appendChild(img);
+        // ajoute le texte des images
+        const figcaption = document.createElement("figcaption");
+        figcaption.innerText = title;
+        figure.appendChild(figcaption);    
+        galleryContainer.appendChild(figure);
+    }
 }
 
-//pour filtrer et afficher les projets en fonction d'une catégorie
-async function filtrerParCategorie(categoryName) {
+async function categoryFilter(categoryName) {
     try {
-        //récupère les catégories depuis l'api
         const response = await fetch("http://localhost:5678/api/categories");
         const categories = await response.json(); 
-       
-        // Cherche la catégorie par nom
         const category = categories.find(cat => cat.name === categoryName);
         // si la catégorie existe, on filtre et affiche les projets
         if (category) {  
             galleryContainer.innerHTML = ''; // Vide la galerie
-            
-            // Filtre les projets par l'ID de catégorie
             const projetsFiltres = works.filter(projet => projet.categoryId === category.id);
             // Boucle pour afficher les projets filtrés
             projetsFiltres.forEach(projet => {
@@ -68,7 +58,6 @@ async function filtrerParCategorie(categoryName) {
     }
 }
 
-//Gestion des boutons fonctionnelle
 const boutonFiltresTous = document.querySelector(".btn-tous");
 const boutonObjets = document.querySelector(".btn-objets");
 const boutonApparts = document.querySelector(".btn-apparts");
@@ -79,9 +68,8 @@ boutonFiltresTous.addEventListener('click', () => {
     galerie(); // Réaffiche tous les projets
 });
 
-// Utilise la fonction filtrerParCategorie pour chaque bouton
-boutonObjets.addEventListener('click', () => filtrerParCategorie('Objets'));
-boutonApparts.addEventListener('click', () => filtrerParCategorie('Appartements'));
-boutonHotelResto.addEventListener('click', () => filtrerParCategorie('Hotels & restaurants'));
+boutonObjets.addEventListener('click', () => categoryFilter('Objets'));
+boutonApparts.addEventListener('click', () => categoryFilter('Appartements'));
+boutonHotelResto.addEventListener('click', () => categoryFilter('Hotels & restaurants'));
 
    

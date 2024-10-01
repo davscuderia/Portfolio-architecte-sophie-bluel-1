@@ -23,7 +23,9 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -46,13 +48,16 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
+
 body {
 	
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 /**** Styles pour le header ****/
 
 header {
@@ -63,9 +68,10 @@ header {
 }
 .bouton-login {
 	text-decoration: none;
-}
-.bouton-login:visited {
 	color: #000000;
+}
+.bouton-login:hover {
+	color: #B1663C;
 }
 section {
 	margin: 50px 0
@@ -85,7 +91,6 @@ nav li {
 nav ul li.login {
     font-weight: bold;
 }
-
 .insta {
 	width: 22px;
 }
@@ -100,7 +105,6 @@ li:hover {
 	align-items: center;
 	flex-wrap: wrap;
 }
-
 #introduction img {
 	display: block;
 	width: 80%;
@@ -110,7 +114,6 @@ li:hover {
 	max-width: 474px;
   	max-height: 355px;
 }
-
 #introduction article {
 	flex: 1;
 	flex-wrap: wrap;
@@ -122,12 +125,12 @@ li:hover {
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
 
 /****Styles pour section portfoglio****/
+
 .boutons-filtres {
 	display: flex;
   	flex-wrap: wrap;
@@ -136,15 +139,16 @@ li:hover {
   	margin: 20px 0;
 }
 .btn-h-et-resto {
-	width: 198px;
+	width: auto;
+	min-width: 198px;
+	white-space: nowrap;
 }
 .btn-apparts {
 	width: 157px;
 }
 .btn-tous, .btn-objets, .btn-apparts, .btn-h-et-resto {
 	height: 37px;
-  	max-width: 198px;
-	font-family: 'Syne';
+  	font-family: 'Syne';
 	font-weight: 700;
 	color: #1d6154;
 	padding: 5px 10px;	
@@ -152,6 +156,9 @@ li:hover {
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	background: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 .btn-tous:hover, .btn-objets:hover, .btn-apparts:hover, .btn-h-et-resto:hover {
 	color: #fff;
@@ -167,8 +174,9 @@ li:hover {
 .gallery img {
 	width: 100%;
 }
+
 /****Styles pour la section contact****/
-/*Ajout du selecteur login pour unifier la mise en page*/
+
 #contact, #login {
 	width: 100%;
 	max-width: 379px;
@@ -176,7 +184,6 @@ li:hover {
 }
 #contact, #login {
 	text-align: center;
-
 }
 #contact h2, #login h2{
 	margin-bottom: 20px;
@@ -188,15 +195,19 @@ li:hover {
 	flex-direction: column;
 	align-items: flex-start;
 }
+
 /****Styles pour le Footer****/
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
+
 /****Styles pour les modales****/
+
 .modal {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	position: fixed;
@@ -215,7 +226,10 @@ footer nav ul {
 	top: auto;
 	padding: 0;
 }
-.modal1-header, .modal2-header {
+.modal.show {
+	display: flex;
+}
+.deletemodal-header, .addmodal-header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -232,14 +246,15 @@ footer nav ul {
 	border: none;
 	font-size: 22px;
 }
-/****Style pour la modal1****/
+
+/****Style pour la deletemodal****/
 
 .gallery-modale {
-    display: grid; /* Utilise une grille pour organiser les miniatures */
+    display: grid;
     grid-template-columns: repeat(5, 77px); /* Ajuste automatiquement le nombre de colonnes */
     grid-template-rows: repeat(3, 103px); 
-	gap: 10px; /* Ajoute un espacement entre les images */
-    padding: 10px; /* Ajoute un peu de padding autour de la galerie */
+	gap: 10px;
+    padding: 10px;
 	justify-content: center;
 	align-content: start;
 	max-width: 425px; /* (77px * 5) + (10px * 4) pour les gaps */
@@ -286,12 +301,8 @@ footer nav ul {
 	justify-content:center;
 	gap: 5px;
 	text-decoration: none;
-}
-.js-modale-btn:visited {
 	color: #000000;
 }
-	
-
 #titlemodal, #titlemodal2 {
 	font-family: inherit;
 	font-size: 28px;
@@ -302,8 +313,8 @@ footer nav ul {
 .separator {
     width: 420px;
     height: 1px;
-    background-color: #B3B3B3; /* Couleur gris clair, ajustez selon vos besoins */
-    margin: 55px auto; /* Espace au-dessus et en-dessous, et centrage horizontal */
+    background-color: #B3B3B3; 
+	margin: 55px auto; /* Espace au-dessus et en-dessous, et centrage horizontal */
 }
 .button-link {
 	position: absolute;
@@ -323,11 +334,12 @@ footer nav ul {
     font-weight: bold;
 	font-size: 16px;   
 }
-
 .button-link:hover {
     background-color: #145A3D; /* Changement de couleur au survol */
 }
-/*fenêtre modale2*/
+
+/*fenêtre addmodal*/
+
 .bouton-retour {
 	position: absolute;
 	top: 25px;
@@ -362,7 +374,21 @@ footer nav ul {
     justify-content: center;
     align-items: center;
 }
-
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+}
+.alert-error {
+    background-color: #ff4444d6;
+}
+.alert-success {
+    background-color: #1D6154;
+}
+#file-upload {
+	display: none; /*cache le bouton parcourir*/
+}
 #btn-ajouter {
    	width: 173px;
     height: 36px;
@@ -374,11 +400,9 @@ footer nav ul {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 100px; /* position sous l'icône */
-   
+    top: 100px; /* position sous l'icône */   
 }
 .info {
- 
     font-size: 10px;
     color: #444444;
     text-align: center;
@@ -388,7 +412,6 @@ footer nav ul {
     top: 142px; /*ajuste la position sous le bouton */
     width: 100%; /*le texte peut s'étendre sur toute la largeur si besoin */
 }
-
 #image-preview {
 	margin: 0 auto 1px; /*ajuste la position dans le cadre*/
 }
@@ -415,13 +438,9 @@ label {
 	background-color: #FFFFFF;  
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
 }
-.categorie-photo {
-}
-
 #valider:hover {
 	background-color: #1D6154;
 }
-
 #valider {
 	position: absolute;
     display: flex;
@@ -441,7 +460,6 @@ label {
   	border: none;
   	color: #ffffff;
 }
-
 h1 {
 	display: flex;
 	flex-direction: column;
@@ -450,31 +468,27 @@ h1 {
 	font-weight: 800;
 	color: #B1663C;
 	line-height: 26.4px;
-
 }
-
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
 	line-height: 11.73px;
 }
-
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
-
-#login-form p {
+#login-form a {
 	text-align: center; /*centre le texte sur la page*/
 	margin-left: 120px;
+	color: #3D3D3D;
 }
 #login-form a:visited {
     color: #3D3D3D; /* Couleur du lien visité */
 }
-
 #contact label, #login label {
 	margin: 2em 0 1em 0;
 }
@@ -491,6 +505,7 @@ h2{
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 /****Styles page admin****/
 
 input[type="submit"]{
